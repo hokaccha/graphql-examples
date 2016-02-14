@@ -1,0 +1,21 @@
+interface Article {
+  id: ID
+  title: String
+  body: String
+}
+
+type Blog implements Article {
+  id: ID
+  title: String
+  body: String
+}
+
+type News implements Article {
+  id: ID
+  title: String
+  body: String
+}
+
+type Query {
+  articles: [Article]
+}
