@@ -1,0 +1,7 @@
+type Example {
+  id: ID
+}
+
+type Query {
+  echo(id: ID): Example
+}

@@ -1,0 +1,9 @@
+scalar DateTime
+
+type Query {
+  user(date: DateTime): User
+}
+
+type User {
+  created: DateTime
+}
