@@ -5,7 +5,6 @@ import {
   GraphQLObjectType,
   GraphQLList,
   GraphQLSchema,
-  graphql,
 } from 'graphql';
 
 let ArticleInterface = new GraphQLInterfaceType({
