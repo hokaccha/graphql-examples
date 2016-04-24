@@ -1,0 +1,14 @@
+type Comment {
+  text: String
+}
+
+type Post {
+  id: ID
+  title: String
+  body: String
+  comments: [Comment]
+}
+
+type Query {
+  post: Post
+}
