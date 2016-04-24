@@ -1,0 +1,6 @@
+type Query {
+  str: String!
+  list1: [String]!
+  list2: [String!]
+  list3: [String!]!
+}
