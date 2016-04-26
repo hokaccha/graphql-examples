@@ -74,6 +74,9 @@ let QueryType = new GraphQLObjectType({
   },
 });
 
-let schema = new GraphQLSchema({ query: QueryType });
+let schema = new GraphQLSchema({
+  query: QueryType,
+  types: [PostType, CommentType],
+});
 
 export { schema };

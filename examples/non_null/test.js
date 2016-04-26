@@ -1,7 +1,7 @@
 import assert from 'power-assert';
 import sinon from 'sinon';
 import { schema, resolver } from './schema';
-import { graphql, GraphQLError } from 'graphql';
+import { graphql } from 'graphql';
 
 describe('non_null', () => {
   describe('str field', () => {
@@ -17,7 +17,7 @@ describe('non_null', () => {
       it('should return error', () => {
         return graphql(schema, query).then(result => {
           let error = result.errors[0];
-          assert(error.constructor === GraphQLError);
+          assert(error.constructor === Error);
           assert(error.message === 'Cannot return null for non-nullable field Query.str.');
         });
       });
@@ -47,7 +47,7 @@ describe('non_null', () => {
       it('should return error', () => {
         return graphql(schema, query).then(result => {
           let error = result.errors[0];
-          assert(error.constructor === GraphQLError);
+          assert(error.constructor === Error);
           assert(error.message === 'Cannot return null for non-nullable field Query.list1.');
         });
       });
@@ -107,7 +107,7 @@ describe('non_null', () => {
       it('should return error', () => {
         return graphql(schema, query).then(result => {
           let error = result.errors[0];
-          assert(error.constructor === GraphQLError);
+          assert(error.constructor === Error);
           assert(error.message === 'Cannot return null for non-nullable field Query.list2.');
         });
       });
@@ -127,7 +127,7 @@ describe('non_null', () => {
       it('should return error', () => {
         return graphql(schema, query).then(result => {
           let error = result.errors[0];
-          assert(error.constructor === GraphQLError);
+          assert(error.constructor === Error);
           assert(error.message === 'Cannot return null for non-nullable field Query.list3.');
         });
       });
@@ -149,7 +149,7 @@ describe('non_null', () => {
       it('should return error', () => {
         return graphql(schema, query).then(result => {
           let error = result.errors[0];
-          assert(error.constructor === GraphQLError);
+          assert(error.constructor === Error);
           assert(error.message === 'Cannot return null for non-nullable field Query.list3.');
         });
       });

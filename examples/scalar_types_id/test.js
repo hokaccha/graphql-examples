@@ -32,7 +32,7 @@ describe('scalar-types-id', () => {
     let query = 'query foo($_id: ID) { echo(id: $_id) { id } }';
     let variables = { _id: 1 };
 
-    return graphql(schema, query, null, variables).then(result => {
+    return graphql(schema, query, null, null, variables).then(result => {
       let echo = result.data.echo;
       assert(echo.id === '1'); // ID type is converted to string
     });
@@ -42,7 +42,7 @@ describe('scalar-types-id', () => {
     let query = 'query foo($_id: ID) { echo(id: $_id) { id } }';
     let variables = { _id: {} };
 
-    return graphql(schema, query, null, variables).then(result => {
+    return graphql(schema, query, null, null, variables).then(result => {
       assert(result.data.echo.id === '[object Object]');
     });
   });

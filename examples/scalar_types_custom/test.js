@@ -98,7 +98,7 @@ describe('scalar-types-custom', () => {
       let variables = { d: inputValue };
       let parseValue = sinon.spy(DateTimeType._scalarConfig, 'parseValue');
 
-      return graphql(schema, query, null, variables).then(() => {
+      return graphql(schema, query, null, null, variables).then(() => {
         assert(parseValue.args[0][0] === inputValue);
         parseValue.restore();
       });
@@ -109,7 +109,7 @@ describe('scalar-types-custom', () => {
       let parseValue = sinon.stub(DateTimeType._scalarConfig, 'parseValue').returns(parsedValue);
       let resolve = sinon.spy(schema._queryType._fields.user, 'resolve');
 
-      return graphql(schema, query, null, { d: "xxx" }).then(() => {
+      return graphql(schema, query, null, null, { d: "xxx" }).then(() => {
         assert(resolve.args[0][1].date === parsedValue);
         parseValue.restore();
         resolve.restore();
@@ -119,7 +119,7 @@ describe('scalar-types-custom', () => {
     it('response will be error when parseValue returns null', () => {
       let parseValue = sinon.stub(DateTimeType._scalarConfig, 'parseValue').returns(null);
 
-      return graphql(schema, query, null, { d: "xxx" }).then(result => {
+      return graphql(schema, query, null, null, { d: "xxx" }).then(result => {
         let errMsg = 'Variable "$d" got invalid value "xxx".\n' +
                      'Expected type "DateTime", found "xxx".';
 
@@ -133,7 +133,7 @@ describe('scalar-types-custom', () => {
         return new GraphQLError(`Query Error: "${value}" is invalid date`);
       });
 
-      return graphql(schema, query, null, { d: "xxx" }).then(result => {
+      return graphql(schema, query, null, null, { d: "xxx" }).then(result => {
         assert(result.errors[0].message === 'Query Error: "xxx" is invalid date');
         parseValue.restore();
       });

@@ -11,7 +11,7 @@ describe('DateTimeType', () => {
     `;
     let variables = { d: "2015-01-01T00:00:00Z" };
 
-    return graphql(schema, query, null, variables).then(result => {
+    return graphql(schema, query, null, null, variables).then(result => {
       assert.deepEqual(result, { data: { example: { created: '2015-01-01T00:00:00.000Z' } } });
     });
   });

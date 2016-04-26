@@ -23,7 +23,7 @@ let ArticleInterface = new GraphQLInterfaceType({
       return NewsType;
     }
     /*eslint-enable no-use-before-define */
-  }
+  },
 });
 
 let BlogType = new GraphQLObjectType({
@@ -68,6 +68,9 @@ let QueryType = new GraphQLObjectType({
   },
 });
 
-let schema = new GraphQLSchema({ query: QueryType });
+let schema = new GraphQLSchema({
+  query: QueryType,
+  types: [NewsType, BlogType],
+});
 
 export { schema };
