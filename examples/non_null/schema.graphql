@@ -1,3 +1,7 @@
+schema {
+  query: Query
+}
+
 type Query {
   str: String!
   list1: [String]!

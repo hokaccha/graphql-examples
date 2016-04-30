@@ -1,3 +1,7 @@
+schema {
+  query: Query
+}
+
 type Comment {
   text: String
 }

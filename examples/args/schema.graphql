@@ -3,5 +3,5 @@ schema {
 }
 
 type Query {
-  hello: String
+  echo(str: String!): String
 }

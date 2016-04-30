@@ -1,3 +1,7 @@
+schema {
+  query: Query
+}
+
 scalar DateTime
 
 type Example {
