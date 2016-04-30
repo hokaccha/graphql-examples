@@ -11,6 +11,14 @@ describe('args', () => {
     });
   });
 
+  it('works', () => {
+    let query = 'query q($s: String!) { echo(str: $s) }';
+
+    return graphql(schema, query, null, null, { s: 1 }).then(result => {
+      assert(result.data.echo === '1');
+    });
+  });
+
   it('should be error', () => {
     let query = '{ echo(str: 1) }';
 
