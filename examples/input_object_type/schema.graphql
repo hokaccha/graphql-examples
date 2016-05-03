@@ -1,0 +1,15 @@
+schema {
+  query: Query
+}
+
+input BarInput {
+  baz: String
+}
+
+input FooInput {
+  bar: BarInput
+}
+
+type Query {
+  echo(foo: FooInput): String
+}
