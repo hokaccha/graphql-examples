@@ -45,4 +45,16 @@ describe('multiple queries', () => {
       assert(result.data.foo === 'mutation-foo');
     });
   });
+
+  it('should be error', () => {
+    return graphql(schema, 'query a { foo } mutation b { foo }').then(result => {
+      assert(result.errors[0].message === 'Must provide operation name if query contains multiple operations.');
+    });
+  });
+
+  it('should be error', () => {
+    return graphql(schema, 'query a { foo }', null, null, null, 'b').then(result => {
+      assert(result.errors[0].message === 'Unknown operation named "b".');
+    });
+  });
 });
