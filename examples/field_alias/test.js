@@ -4,11 +4,12 @@ import { graphql } from 'graphql';
 
 describe('field alias', () => {
   it('works', () => {
-    let query = '{ foo1: foo, foo2: foo }';
+    let query = '{ foo1: foo, foo2: foo, foo }';
 
     return graphql(schema, query).then(result => {
       assert(result.data.foo1 === 'foo');
       assert(result.data.foo2 === 'foo');
+      assert(result.data.foo === 'foo');
     });
   });
 
