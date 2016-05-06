@@ -7,11 +7,11 @@ import {
 let QueryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    hello: {
+    foo: {
       type: GraphQLString,
-      resolve: () => 'world',
+      resolve: () => 'foo',
     },
-    echo: {
+    bar: {
       type: GraphQLString,
       args: {
         a: { type: GraphQLString },

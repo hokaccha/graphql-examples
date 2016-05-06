@@ -2,46 +2,46 @@ import assert from 'power-assert';
 import { schema } from './schema';
 import { graphql } from 'graphql';
 
-describe('hello world', () => {
+describe('field alias', () => {
   it('works', () => {
-    let query = '{ foo: hello, bar: hello }';
+    let query = '{ foo1: foo, foo2: foo }';
 
     return graphql(schema, query).then(result => {
-      assert(result.data.foo === 'world');
-      assert(result.data.bar === 'world');
+      assert(result.data.foo1 === 'foo');
+      assert(result.data.foo2 === 'foo');
     });
   });
 
   it('works', () => {
-    let query = '{ foo: echo(a: "x"), bar: echo(a: "y") }';
+    let query = '{ bar1: bar(a: "x"), bar2: bar(a: "y") }';
 
     return graphql(schema, query).then(result => {
-      assert(result.data.foo === 'x');
-      assert(result.data.bar === 'y');
+      assert(result.data.bar1 === 'x');
+      assert(result.data.bar2 === 'y');
     });
   });
 
   it('works', () => {
-    let query = '{ foo: hello, foo: hello }';
+    let query = '{ foo1: foo, foo1: foo }';
 
     return graphql(schema, query).then(result => {
-      assert(result.data.foo === 'world');
+      assert(result.data.foo1 === 'foo');
     });
   });
 
   it('error', () => {
-    let query = '{ foo: hello, foo: echo(a: "x") }';
+    let query = '{ foo1: foo, foo1: bar(a: "x") }';
 
     return graphql(schema, query).then(result => {
-      assert(result.errors[0].message === 'Fields "foo" conflict because hello and echo are different fields.');
+      assert(result.errors[0].message === 'Fields "foo1" conflict because foo and bar are different fields.');
     });
   });
 
   it('error', () => {
-    let query = '{ foo: echo(a: "x"), foo: echo(a: "y") }';
+    let query = '{ bar1: bar(a: "x"), bar1: bar(a: "y") }';
 
     return graphql(schema, query).then(result => {
-      assert(result.errors[0].message === 'Fields "foo" conflict because they have differing arguments.');
+      assert(result.errors[0].message === 'Fields "bar1" conflict because they have differing arguments.');
     });
   });
 });
