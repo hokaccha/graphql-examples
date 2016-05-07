@@ -3,6 +3,5 @@ schema {
 }
 
 type Query {
-  foo: String
-  bar(a: String): String
+  echo(foo: String): String
 }
