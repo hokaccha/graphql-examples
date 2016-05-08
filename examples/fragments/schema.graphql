@@ -2,8 +2,12 @@ schema {
   query: Query
 }
 
-type Query {
+type Obj {
   foo: String
   bar: String
   baz: String
+}
+
+type Query {
+  obj: Obj
 }

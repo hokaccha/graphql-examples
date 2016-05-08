@@ -4,8 +4,8 @@ import {
   GraphQLSchema,
 } from 'graphql';
 
-let QueryType = new GraphQLObjectType({
-  name: 'Query',
+let ObjType = new GraphQLObjectType({
+  name: 'Obj',
   fields: {
     foo: {
       type: GraphQLString,
@@ -18,6 +18,16 @@ let QueryType = new GraphQLObjectType({
     baz: {
       type: GraphQLString,
       resolve: () => 'baz',
+    },
+  },
+});
+
+let QueryType = new GraphQLObjectType({
+  name: 'Query',
+  fields: {
+    obj: {
+      type: ObjType,
+      resolve: () => '{}',
     },
   },
 });
