@@ -9,7 +9,7 @@
     "glob": "^7.0.0",
     "graphql": "^0.5.0",
     "mocha": "^2.4.5",
-    "power-assert": "^1.2.0",
+    "power-assert": "^1.4.0",
     "sinon": "^1.17.3"
   },
   "scripts": {

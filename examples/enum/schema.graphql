@@ -1,0 +1,13 @@
+schema {
+  query: Query
+}
+
+enum Foo {
+  a
+  b
+  c
+}
+
+type Query {
+  foo(bar: Foo): Foo
+}
