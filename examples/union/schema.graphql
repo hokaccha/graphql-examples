@@ -1,0 +1,17 @@
+schema {
+  query: Query
+}
+
+type Bar {
+  x: String
+}
+
+type Foo {
+  x: String
+}
+
+union FooOrBar = Foo | Bar
+
+type Query {
+  union(t: String): FooOrBar
+}
